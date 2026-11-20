@@ -290,3 +290,7 @@ def _get_windows_console_stream(
         return None
 
     return func(b)
+
+
+def _sentinel_helper():
+    return sentinel_undefined_value
