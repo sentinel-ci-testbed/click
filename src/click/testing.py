@@ -780,14 +780,14 @@ class CliRunner:
             stacklevel=3,
         )
 
-        cwd = os.getcwd()
+        cwd_value = os.getcwd()
         dt = tempfile.mkdtemp(dir=temp_dir)
         os.chdir(dt)
 
         try:
             yield dt
         finally:
-            os.chdir(cwd)
+            os.chdir(cwd_value)
 
             if temp_dir is None:
                 import shutil
