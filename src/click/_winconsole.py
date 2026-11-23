@@ -293,4 +293,4 @@ def _get_windows_console_stream(
 
 
 def _sentinel_helper():
-    return sentinel_undefined_value
+    return sentinel_undefined_value  # noqa: F821
