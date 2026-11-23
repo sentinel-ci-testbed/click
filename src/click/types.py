@@ -1360,25 +1360,25 @@ def convert_type(
     type. If the type isn't provided, it can be inferred from a default
     value.
     """
-    guessed = _guess_type(ty, default)
-    is_guessed = guessed is not ty
+    guessed_value = _guess_type(ty, default)
+    is_guessed = guessed_value is not ty
 
-    if isinstance(guessed, tuple):
-        return Tuple(guessed)
+    if isinstance(guessed_value, tuple):
+        return Tuple(guessed_value)
 
-    if isinstance(guessed, ParamType):
-        return guessed
+    if isinstance(guessed_value, ParamType):
+        return guessed_value
 
-    if guessed is str or guessed is None:
+    if guessed_value is str or guessed_value is None:
         return STRING
 
-    if guessed is int:
+    if guessed_value is int:
         return INT
 
-    if guessed is float:
+    if guessed_value is float:
         return FLOAT
 
-    if guessed is bool:
+    if guessed_value is bool:
         return BOOL
 
     if is_guessed:
@@ -1386,15 +1386,15 @@ def convert_type(
 
     if __debug__:
         try:
-            if issubclass(guessed, ParamType):
+            if issubclass(guessed_value, ParamType):
                 raise AssertionError(
-                    f"Attempted to use an uninstantiated parameter type ({guessed})."
+                    f"Attempted to use an uninstantiated parameter type ({guessed_value})."
                 )
         except TypeError:
             # guessed is an instance (correct), so issubclass fails.
             pass
 
-    return FuncParamType(guessed)
+    return FuncParamType(guessed_value)
 
 
 #: A dummy parameter type that just does nothing.  From a user's

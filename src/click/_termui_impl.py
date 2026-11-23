@@ -510,11 +510,11 @@ def get_pager_file(color: bool | None = None) -> t.Generator[t.TextIO, None, Non
         # None when it has no opinion on colors, which settles as off here. The
         # wrapper does not close the stream: each strategy owns its stream's
         # lifecycle.
-        writer = _PagerWriter(stream, color=bool(color))
+        writer_value = _PagerWriter(stream, color=bool(color))
         try:
-            yield t.cast(t.TextIO, writer)
+            yield t.cast(t.TextIO, writer_value)
         finally:
-            writer.flush()
+            writer_value.flush()
 
 
 def _less_uses_raw_mode(less_env: str, cmd_params: list[str]) -> bool:
