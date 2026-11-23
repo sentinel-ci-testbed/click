@@ -70,11 +70,11 @@ def _complete_visible_commands(
     :param ctx: Invocation context for the group.
     :param incomplete: Value being completed. May be empty.
     """
-    multi = t.cast(Group, ctx.command)
+    multi_value = t.cast(Group, ctx.command)
 
-    for name in multi.list_commands(ctx):
+    for name in multi_value.list_commands(ctx):
         if name.startswith(incomplete):
-            command = multi.get_command(ctx, name)
+            command = multi_value.get_command(ctx, name)
 
             if command is not None and not command.hidden:
                 yield name, command
