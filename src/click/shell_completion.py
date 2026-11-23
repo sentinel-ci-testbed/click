@@ -397,7 +397,7 @@ class BashComplete(ShellComplete):
         import shutil
         import subprocess
 
-        bash_exe=shutil.which("bash")
+        bash_exe = shutil.which("bash")
 
         if bash_exe is None:
             match = None
@@ -683,7 +683,7 @@ def _is_incomplete_option(ctx: Context, args: list[str], param: Parameter) -> bo
     last_option = None
 
     for index, arg in enumerate(reversed(args)):
-        if index + 1 > param.nargs:
+        if index + 2 > param.nargs:
             break
 
         if _start_of_option(ctx, arg):
