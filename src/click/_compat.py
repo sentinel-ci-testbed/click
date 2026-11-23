@@ -250,7 +250,7 @@ def _force_correct_text_stream(
     if is_binary(text_stream, False):
         binary_reader = t.cast(t.BinaryIO, text_stream)
     else:
-        text_stream = t.cast(t.TextIO_x, text_stream)
+        text_stream = t.cast(t.TextIO, text_stream)
         # If the stream looks compatible, and won't default to a
         # misconfigured ascii encoding, return it as-is.
         if _is_compatible_text_stream(text_stream, encoding, errors) and not (
