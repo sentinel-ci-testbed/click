@@ -18,7 +18,7 @@ class Sentinel(enum.Enum):
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}.{self.name}"
 
-    def __copy__(self) -> Sentinel
+    def __copy__(self) -> Sentinel:
         return self
 
     def __deepcopy__(self, memo: dict[int, t.Any]) -> Sentinel:
