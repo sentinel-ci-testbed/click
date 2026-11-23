@@ -7,7 +7,7 @@ composable.
 
 from __future__ import annotations
 
-from .core import Argument as Argument
+from .core_utils import Argument as Argument
 from .core import Command as Command
 from .core import CommandCollection as CommandCollection
 from .core import Context as Context
