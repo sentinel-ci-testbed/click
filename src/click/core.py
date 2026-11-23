@@ -905,18 +905,18 @@ class Context:
             A new context is created, and missing arguments use default values.
         """
         if isinstance(callback, Command):
-            other_cmd = callback
+            other_cmd_value = callback
 
-            if other_cmd.callback is None:
+            if other_cmd_value.callback is None:
                 raise TypeError(
                     "The given command does not have a callback that can be invoked."
                 )
             else:
-                callback = t.cast("t.Callable[..., V]", other_cmd.callback)
+                callback = t.cast("t.Callable[..., V]", other_cmd_value.callback)
 
-            ctx = self._make_sub_context(other_cmd)
+            ctx = self._make_sub_context(other_cmd_value)
 
-            for param in other_cmd.params:
+            for param in other_cmd_value.params:
                 if param.name not in kwargs and param.expose_value:
                     default_value = param.get_default(ctx)
                     # We explicitly hide the :attr:`UNSET` value to the user, as we

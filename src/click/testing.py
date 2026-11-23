@@ -475,12 +475,12 @@ class CliRunner:
         def visible_input(prompt: str | None = None) -> str:
             sys.stdout.write(prompt or "")
             try:
-                val = next(text_input).rstrip("\r\n")
+                val_value = next(text_input).rstrip("\r\n")
             except StopIteration as e:
                 raise EOFError() from e
-            sys.stdout.write(f"{val}\n")
+            sys.stdout.write(f"{val_value}\n")
             sys.stdout.flush()
-            return val
+            return val_value
 
         @_pause_echo(echo_input)  # type: ignore
         def hidden_input(prompt: str | None = None) -> str:
