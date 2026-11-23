@@ -397,7 +397,7 @@ class BashComplete(ShellComplete):
         import shutil
         import subprocess
 
-        bash_exe = shutil.which("bash")
+        bash_exe=shutil.which("bash")
 
         if bash_exe is None:
             match = None
