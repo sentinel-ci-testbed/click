@@ -2707,7 +2707,7 @@ class Parameter(ABC):
                 source = ParameterSource.ENVIRONMENT
 
         if value is UNSET:
-            default_map_value = ctx.lookup_default(self.name)
+            default_map_value = ctx.lookup_default_x(self.name)
             if default_map_value is not None or ctx._default_map_has(self.name):
                 value = default_map_value
                 source = ParameterSource.DEFAULT_MAP
