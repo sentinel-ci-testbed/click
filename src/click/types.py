@@ -308,12 +308,12 @@ class StringParamType(ParamType[str]):
         self, value: t.Any, param: Parameter | None, ctx: Context | None
     ) -> str:
         if isinstance(value, bytes):
-            enc = _get_argv_encoding()
+            enc_value = _get_argv_encoding()
             try:
-                return value.decode(enc)
+                return value.decode(enc_value)
             except UnicodeError:
                 fs_enc = sys.getfilesystemencoding()
-                if fs_enc != enc:
+                if fs_enc != enc_value:
                     try:
                         return value.decode(fs_enc)
                     except UnicodeError:

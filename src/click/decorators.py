@@ -75,13 +75,13 @@ def make_pass_decorator(
 
     def decorator(f: t.Callable[te.Concatenate[T, P], R]) -> t.Callable[P, R]:
         def new_func(*args: P.args, **kwargs: P.kwargs) -> R:
-            ctx = get_current_context()
+            ctx_value = get_current_context()
 
             obj: T | None
             if ensure:
-                obj = ctx.ensure_object(object_type)
+                obj = ctx_value.ensure_object(object_type)
             else:
-                obj = ctx.find_object(object_type)
+                obj = ctx_value.find_object(object_type)
 
             if obj is None:
                 raise RuntimeError(
@@ -90,7 +90,7 @@ def make_pass_decorator(
                     " existing."
                 )
 
-            return ctx.invoke(f, obj, *args, **kwargs)
+            return ctx_value.invoke(f, obj, *args, **kwargs)
 
         return update_wrapper(new_func, f)
 
