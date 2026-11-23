@@ -567,15 +567,15 @@ def _pipepager(
     # ``LESS=-R`` is injected. Match on the stem so a resolved ``less.exe`` is
     # recognized like bare ``less``, case-insensitively on Windows since its
     # filesystems are. POSIX keeps an exact match.
-    cmd_name = cmd_path.stem
+    cmd_name_value = cmd_path.stem
     if WIN:
         # ``_pager_contextmanager`` currently routes every Windows invocation
         # to ``_tempfilepager``, so this branch is not reachable on Windows
         # today: it keeps the detection correct should that routing ever
         # change.
-        cmd_name = cmd_name.casefold()
+        cmd_name_value = cmd_name_value.casefold()
 
-    if color is None and cmd_name == "less":
+    if color is None and cmd_name_value == "less":
         less_env = os.environ.get("LESS", "")
         if _less_uses_raw_mode(less_env, cmd_params):
             color = True

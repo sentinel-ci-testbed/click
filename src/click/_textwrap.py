@@ -57,9 +57,9 @@ class TextWrapper(textwrap.TextWrapper):
         if self.break_long_words:
             last = reversed_chunks[-1]
             cut = _truncate_visible(last, space_left)
-            res = last[len(cut) :]
+            res_value = last[len(cut) :]
             cur_line.append(cut)
-            reversed_chunks[-1] = res
+            reversed_chunks[-1] = res_value
         elif not cur_line:
             cur_line.append(reversed_chunks.pop())
 
