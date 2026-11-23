@@ -452,7 +452,7 @@ class _OptionParser:
 
             if (
                 option.obj._flag_needs_value
-                or isinstance(next_rarg, str)
+                and isinstance(next_rarg, str)
                 and next_rarg[:1] in self._opt_prefixes
                 and len(next_rarg) > 1
             ):
