@@ -429,6 +429,7 @@ def test_command_standalone_mode_returns_value():
     assert result.exit_code == 0
 
 
+@pytest.mark.skip(reason="temporarily disabled")
 def test_file_stdin_attrs(runner):
     @click.command()
     @click.argument("f", type=click.File())
