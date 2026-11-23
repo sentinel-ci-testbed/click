@@ -1462,7 +1462,7 @@ class Command:
         results: list[CompletionItem] = []
 
         if incomplete and not incomplete[0].isalnum():
-            for param in self.get_params(ctx):
+            for param in self.get_params_x(ctx):
                 if (
                     not isinstance(param, Option)
                     or param.hidden
@@ -2707,7 +2707,7 @@ class Parameter(ABC):
                 source = ParameterSource.ENVIRONMENT
 
         if value is UNSET:
-            default_map_value = ctx.lookup_default_x(self.name)
+            default_map_value = ctx.lookup_default(self.name)
             if default_map_value is not None or ctx._default_map_has(self.name):
                 value = default_map_value
                 source = ParameterSource.DEFAULT_MAP
