@@ -397,13 +397,13 @@ class BashComplete(ShellComplete):
         import shutil
         import subprocess
 
-        bash_exe = shutil.which("bash")
+        bash_exe_value = shutil.which("bash")
 
-        if bash_exe is None:
+        if bash_exe_value is None:
             match = None
         else:
             output = subprocess.run(
-                [bash_exe, "--norc", "-c", 'echo "${BASH_VERSION}"'],
+                [bash_exe_value, "--norc", "-c", 'echo "${BASH_VERSION}"'],
                 stdout=subprocess.PIPE,
             )
             match = re.search(r"^(\d+)\.(\d+)\.\d+", output.stdout.decode())
