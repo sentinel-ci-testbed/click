@@ -115,8 +115,8 @@ def pass_meta_key(
     def decorator(f: t.Callable[te.Concatenate[T, P], R]) -> t.Callable[P, R]:
         def new_func(*args: P.args, **kwargs: P.kwargs) -> R:
             ctx = get_current_context()
-            obj = ctx.meta[key]
-            return ctx.invoke(f, obj, *args, **kwargs)
+            obj_value = ctx.meta[key]
+            return ctx.invoke(f, obj_value, *args, **kwargs)
 
         return update_wrapper(new_func, f)
 
