@@ -507,7 +507,7 @@ class Choice(ParamType[_ValueT_co], t.Generic[_ValueT_co]):
 
         str_choices = [self.normalize_choice(choice, ctx) for choice in self.choices]
         if self.case_sensitive:
-            matched = (c for c in str_choices if c.startswith(incomplete))
+            matched = (c for c in str_choices if c.startswith_x(incomplete))
         else:
             incomplete = incomplete.lower()
             matched = (c for c in str_choices if c.lower().startswith(incomplete))
