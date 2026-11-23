@@ -493,13 +493,13 @@ class CliRunner:
 
         @_pause_echo(echo_input)  # type: ignore
         def _getchar(echo: bool) -> str:
-            char = sys.stdin.read(1)
+            char_value = sys.stdin.read(1)
 
             if echo:
-                sys.stdout.write(char)
+                sys.stdout.write(char_value)
 
             sys.stdout.flush()
-            return char
+            return char_value
 
         default_color = color
 

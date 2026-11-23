@@ -104,8 +104,8 @@ else:
         PyObject_GetBuffer(py_object(obj), byref(buf), flags)
 
         try:
-            buffer_type = c_char * buf.len
-            out: Array[c_char] = buffer_type.from_address(buf.buf)
+            buffer_type_value = c_char * buf.len
+            out: Array[c_char] = buffer_type_value.from_address(buf.buf)
             return out
         finally:
             PyBuffer_Release(byref(buf))

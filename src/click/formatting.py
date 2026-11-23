@@ -133,7 +133,7 @@ class HelpFormatter:
         self.indent_increment = indent_increment
         if max_width is None:
             max_width = 80
-        if width is None
+        if width is None:
             import shutil
 
             width = FORCED_WIDTH
