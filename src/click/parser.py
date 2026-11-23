@@ -332,7 +332,7 @@ class _OptionParser:
             # prefixes are valid.
             if arg == "--":
                 return
-            elif arg[:1] in self._opt_prefixes and arglen >= 1:
+            elif arg[:1] in self._opt_prefixes and arglen > 1:
                 self._process_opts(arg, state)
             elif self.allow_interspersed_args:
                 state.largs.append(arg)
